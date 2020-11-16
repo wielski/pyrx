@@ -29,26 +29,37 @@
 #include <pybind11/pybind11.h>
 #include <thread>
 #include "rx-slow-hash.h"
+#include <iostream>
+using namespace std;
+#include <string>
 
 namespace py = pybind11;
 
-py::bytes get_rx_hash(const std::string &input,
-        const std::string &seed_hash, const uint64_t height)
-{
-    static unsigned miners = std::thread::hardware_concurrency();
-    uint64_t seed_height = rx_seedheight(height);
-    std::string output;
-    output.resize(32);
-    rx_slow_hash(height, seed_height, seed_hash.data(),
-            input.data(), input.size(), &output[0], miners, 0);
-    return output;
-}
+
+struct PyRX {
+    PyRX(){ }
+    py::bytes get_rx_hash(const std::string &input,
+            const std::string &seed_hash, const uint64_t height)
+    {
+        static unsigned miners = std::thread::hardware_concurrency();
+        uint64_t seed_height = rx_seedheight(height);
+        std::string output;
+        output.resize(32);
+        rx_slow_hash(height, seed_height, seed_hash.data(),
+                input.data(), input.size(), &output[0], miners, 0);
+        return output;
+    }
+};
+
+
 
 PYBIND11_MODULE(pyrx, m)
 {
-    m.def("get_rx_hash", &get_rx_hash, R"pbdoc(
-        Get a RandomX hash
-    )pbdoc");
+    py::class_<PyRX>(m, "PyRX")
+        .def(py::init())
+        .def("get_rx_hash", &PyRX::get_rx_hash, R"pbdoc(
+            Get a RandomX hash
+        )pbdoc");
 
 #ifdef VERSION_INFO
     m.attr("__version__") = VERSION_INFO;

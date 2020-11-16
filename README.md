@@ -5,14 +5,14 @@ A Python extension for getting RandomX hashes.
 ## Installation
 
 ```
-pip install git+https://github.com/jtgrassie/pyrx
+pip install git+https://github.com/pdxwebdev/pyrx
 ```
 
 ## Usage
 
 See [tests/test.py](./tests/test.py).
 
-## Supporting the project
+## Supporting the project creator: @jtgrassie
 
 XMR donations to:
 
