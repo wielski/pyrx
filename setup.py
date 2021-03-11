@@ -57,7 +57,7 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args, cwd=self.build_temp)
 
 setup(
-    name='pyrx',
+    name='pyrxdev',
     version='0.0.4',
     author='Jethro Grassie',
     author_email='jtgrassie@users.noreply.github.com',
