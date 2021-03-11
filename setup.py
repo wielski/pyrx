@@ -63,7 +63,7 @@ setup(
     author_email='jtgrassie@users.noreply.github.com',
     description='Python RandomX hashing module',
     long_description='',
-    ext_modules=[CMakeExtension('pyrx')],
+    ext_modules=[CMakeExtension('pyrxdev')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
 )

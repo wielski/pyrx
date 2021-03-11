@@ -43,7 +43,7 @@ py::bytes get_rx_hash(const std::string &input,
     return output;
 }
 
-PYBIND11_MODULE(pyrx, m)
+PYBIND11_MODULE(pyrxdev, m)
 {
     m.def("get_rx_hash", &get_rx_hash, R"pbdoc(
         Get a RandomX hash

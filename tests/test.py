@@ -1,7 +1,7 @@
-import pyrx
+import pyrxdev
 import binascii
 
-assert pyrx.__version__ >= '0.0.3'
+assert pyrxdev.__version__ >= '0.0.3'
 
 expected = [
         '0b3d9586ee70d69b2d50cd3f1a998abfd86b61d9d5a70e05e61ffcf1d7f865e7',
@@ -12,7 +12,7 @@ expected = [
         ]
 
 seed_hash = binascii.unhexlify('63eceef7919087068ac5d1b7faffa23fc90a58ad0ca89ecb224a2ef7ba282d48')
-p = pyrx.PyRX()
+p = pyrxdev.PyRX()
 for x in range(5000000):
     m = "Hello RandomX {}".format(x)
     print("Hashing: {}".format(m))

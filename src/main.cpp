@@ -53,7 +53,7 @@ struct PyRX {
 
 
 
-PYBIND11_MODULE(pyrx, m)
+PYBIND11_MODULE(pyrxdev, m)
 {
     py::class_<PyRX>(m, "PyRX")
         .def(py::init())
